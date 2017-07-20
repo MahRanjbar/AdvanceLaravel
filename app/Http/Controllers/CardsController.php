@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Card;
+use App\Tag;
 
 class CardsController extends Controller
 {
@@ -17,11 +18,11 @@ class CardsController extends Controller
     {
     	$card=Card::find($id);
         $card->load('notes.user');
+        $tags = Tag::all();
         // return $card;
-    	return view('cards.show',compact('card'));
+    	return view('cards.show',compact('card','tags'));
 
-
-         // $card->load('notes.user');
+        // $card->load('notes.user');
         // return $card;
         
         // return view('cards.show',compact('card'));
